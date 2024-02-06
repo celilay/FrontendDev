@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const Country = ({ inputValue }) => {
   const { loading, error, data } = useQuery(GET_COUNTRY);
-
+  const COLORS = ["#ff0000", "#00ff00", "#0000ff"];
   const [clicked, setClicked] = useState(null);
 
   const clickCard = (index) => {
@@ -25,6 +25,12 @@ const Country = ({ inputValue }) => {
           className={`card ${clicked === i ? "clicked" : ""}`}
           key={i}
           onClick={() => clickCard(i)}
+          style={{
+            backgroundColor:
+              clicked === i
+                ? COLORS[Math.floor(Math.random() * COLORS.length)]
+                : "",
+          }}
         >
           <p>
             <b>Country:</b>
