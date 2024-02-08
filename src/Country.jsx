@@ -1,18 +1,13 @@
-import { useQuery } from "@apollo/client";
-import { GET_COUNTRY } from "./query";
-import { useState } from "react";
+import React, { useState } from "react";
 
-const Country = ({ inputValue }) => {
-  const { loading, error, data } = useQuery(GET_COUNTRY);
+const Country = ({ inputValue, data }) => {
   const COLORS = ["#ff0000", "#00ff00", "#0000ff"];
+
   const [clicked, setClicked] = useState(null);
 
   const clickCard = (index) => {
     setClicked(index);
   };
-
-  if (loading) return `Loading...`;
-  if (error) return `Error: {error.message}`;
 
   const filteredData = data?.countries?.filter((country) =>
     country.name.toLowerCase().includes(inputValue.toLowerCase())

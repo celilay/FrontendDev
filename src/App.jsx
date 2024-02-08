@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Country from "./Country";
 import "./app.scss"
+import Countries from "./Countries";
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
       <div className="filter">
         <input type="text" placeholder="Search Country"  className="input" onChange={inputChange}/>
       </div>
-      <Country inputValue={inputValue}/>
+      <Countries inputValue={inputValue}/>
     </>
   );
 }
