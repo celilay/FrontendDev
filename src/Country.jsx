@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { colors } from "./colors";
 
 const Country = ({ inputValue, data }) => {
-  const COLORS = ["#ff0000", "#00ff00", "#0000ff"];
-
   const [clicked, setClicked] = useState(null);
 
   const clickCard = (index) => {
-    setClicked(index);
+    setClicked((lastIndex) => lastIndex === index ? -1 : index);
   };
 
   const filteredData = data?.countries?.filter((country) =>
     country.name.toLowerCase().includes(inputValue.toLowerCase())
   );
+
+  useEffect(() => {
+    console.log(filteredData[9]);
+    
+    
+  }, [filteredData]);
 
   return (
     <div className="cardContainer">
@@ -23,7 +28,7 @@ const Country = ({ inputValue, data }) => {
           style={{
             backgroundColor:
               clicked === i
-                ? COLORS[Math.floor(Math.random() * COLORS.length)]
+                ? colors[Math.floor(Math.random() * colors.length)]
                 : "",
           }}
         >
@@ -34,6 +39,10 @@ const Country = ({ inputValue, data }) => {
           <p>
             <b>Capital:</b>
             {cont.capital}
+          </p>
+          <p>
+            <b>Continent: </b>
+            {cont.continent.name}
           </p>
         </div>
       ))}
