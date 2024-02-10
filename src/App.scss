@@ -30,7 +30,6 @@ body {
   top: 0;
   left: 0;
 
-
   .form__group {
     position: relative;
     padding: 15px 0 0;
@@ -119,5 +118,29 @@ body {
   .clicked {
     background-color: aliceblue;
     color: #0b0b0c;
+  }
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  select {
+    padding: 7px 40px 7px 12px;
+    width: 100%;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 150ms ease;
+    border: none;
+    &:focus{
+      border: none;
+    }
+    .option{
+      &:hover{
+        font-size: 29px;
+      }
+
+    }
   }
 }

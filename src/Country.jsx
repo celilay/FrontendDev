@@ -1,25 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { colors } from "./colors";
 
-const Country = ({ inputValue, data }) => {
+const Country = ({ inputValue, data, selectedValue }) => {
   const [clicked, setClicked] = useState(null);
 
   const clickCard = (index) => {
-    setClicked((lastIndex) => lastIndex === index ? -1 : index);
+    setClicked((lastIndex) => (lastIndex === index ? -1 : index));
   };
 
-  const filteredData = data?.countries?.filter((country) =>
-    country.name.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  const filteredData = data?.countries?.filter((country) => {
+    if (selectedValue === "All") {
+        return true
+    } else {
+        return (
+            country.name.toLowerCase().includes(inputValue.toLowerCase()) && 
+            country.continent.name.toLowerCase().includes(selectedValue.toLowerCase())
+        );
+    }
+});
+
+
+
 
   useEffect(() => {
-      if (filteredData.length >= 10) {
-        setClicked(9);
-      } else {
-        setClicked(filteredData.length - 1);
-      }
-    
-  }, [inputValue]);
+    if (filteredData.length >= 10) {
+      setClicked(9);
+    } else {
+      setClicked(filteredData.length - 1);
+    }
+  }, [inputValue,selectedValue]);
+
+
+
 
   return (
     <div className="cardContainer">

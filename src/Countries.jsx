@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { GET_COUNTRY } from "./query";
 import Country from "./Country";
 
-const Countries = ({ inputValue }) => {
+const Countries = ({ inputValue, selectedValue }) => {
   const { loading, error, data } = useQuery(GET_COUNTRY);
 
   if (loading) return `Loading...`;
@@ -10,7 +10,7 @@ const Countries = ({ inputValue }) => {
 
   
 
-  return <Country inputValue={inputValue} data={data} />;
+  return <Country inputValue={inputValue} data={data} selectedValue={selectedValue} />;
 };
 
 export default Countries;
