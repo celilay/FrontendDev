@@ -1,40 +1,95 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
 $cardColor: #191c29;
+$primary: #11998e;
+$secondary: #38ef7d;
+$white: #fff;
+$gray: #9b9b9b;
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
+  user-select: none;
 }
 
 body {
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   background-color: #191c29;
 }
 
-.filter {
+.inputContainer {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: #191c29;
 
-  .input {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+
+  .form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
     width: 50%;
-    display: flex;
-    margin: 15px;
-    border: none;
-    background-color: aliceblue;
-    border-radius: 10px;
-    height: 35px;
-    justify-content: center;
-    padding: 5px;
-    padding-left: 20px;
-    font-size: 18px;
-    color: rgb(59, 59, 59);
+  }
 
-    &:focus {
-      border: 1px solid lightblue;
+  .form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid $gray;
+    outline: 0;
+    font-size: 1rem;
+    color: $white;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:placeholder-shown ~ .form__label {
+      font-size: 1.3rem;
+      cursor: text;
+      top: 20px;
+    }
+  }
+
+  .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 10px;
+    color: $gray;
+  }
+
+  .form__field:focus {
+    ~ .form__label {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.2s;
+      font-size: 1rem;
+      color: $primary;
+      font-weight: 700;
+    }
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, $primary, $secondary);
+    border-image-slice: 1;
+  }
+  .form__field {
+    &:required,
+    &:invalid {
+      box-shadow: none;
     }
   }
 }
@@ -45,9 +100,9 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 auto;
   width: 100%;
   max-width: 1450px;
+  margin-top: 100px;
 
   .card {
     background-color: #0b0b0c;
@@ -66,5 +121,3 @@ body {
     color: #0b0b0c;
   }
 }
-
-

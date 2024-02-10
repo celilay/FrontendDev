@@ -13,10 +13,13 @@ const Country = ({ inputValue, data }) => {
   );
 
   useEffect(() => {
-    console.log(filteredData[9]);
+      if (filteredData.length >= 10) {
+        setClicked(9);
+      } else {
+        setClicked(filteredData.length - 1);
+      }
     
-    
-  }, [filteredData]);
+  }, [inputValue]);
 
   return (
     <div className="cardContainer">
