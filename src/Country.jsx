@@ -10,17 +10,17 @@ const Country = ({ inputValue, data, selectedValue }) => {
 
   const filteredData = data?.countries?.filter((country) => {
     if (selectedValue === "All") {
-        return true
+      return country &&
+      country.name.toLowerCase().includes(inputValue.toLowerCase())
     } else {
-        return (
-            country.name.toLowerCase().includes(inputValue.toLowerCase()) && 
-            country.continent.name.toLowerCase().includes(selectedValue.toLowerCase())
-        );
+      return (
+        country.name.toLowerCase().includes(inputValue.toLowerCase()) &&
+        country.continent.name
+          .toLowerCase()
+          .includes(selectedValue.toLowerCase())
+      );
     }
-});
-
-
-
+  });
 
   useEffect(() => {
     if (filteredData.length >= 10) {
@@ -28,10 +28,7 @@ const Country = ({ inputValue, data, selectedValue }) => {
     } else {
       setClicked(filteredData.length - 1);
     }
-  }, [inputValue,selectedValue]);
-
-
-
+  }, [inputValue, selectedValue]);
 
   return (
     <div className="cardContainer">
