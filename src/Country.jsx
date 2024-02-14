@@ -30,7 +30,7 @@ const Country = ({ inputValue, data, selectedValue }) => {
     } else {
       setClicked(filteredData.length - 1);
     }
-  }, [inputValue, selectedValue]);
+  }, [inputValue]);
 
   return (
     <div className="cardContainer">
