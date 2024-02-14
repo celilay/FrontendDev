@@ -5,6 +5,15 @@ $secondary: #38ef7d;
 $white: #fff;
 $gray: #9b9b9b;
 
+:root {
+  --loading-text-gradient: linear-gradient(
+    90deg,
+    transparent 0% 16.66%,
+    #fff 33.33% 50%,
+    transparent 66.66% 75%
+  );
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,18 +27,18 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #191c29;
+  background-color: $cardColor;
 }
 
 .inputContainer {
   width: 100%;
   display: flex;
   justify-content: center;
-
+  z-index: 3;
   position: fixed;
   top: 0;
   left: 0;
-
+  background-color: #191c29;
   .form__group {
     position: relative;
     padding: 15px 0 0;
@@ -106,19 +115,31 @@ body {
   .card {
     background-color: #0b0b0c;
     margin: 10px;
-    width: 180px;
+    width: 200px;
     border-radius: 20px;
     padding: 15px;
-    text-align: center;
-    height: 200px;
+    height: 250px;
     border: 1px solid black;
     cursor: pointer;
+    position: relative;
+    font-size: 14px;
+    .flag {
+      width: 70px;
+      height: 40px;
+      margin-bottom: 15px;
+      transform: translatex(65%);
+    }
+    p{
+      padding-bottom: 8px;
+    }
   }
 
   .clicked {
     background-color: aliceblue;
     color: #0b0b0c;
   }
+
+
 }
 
 .option {
@@ -133,14 +154,57 @@ body {
     font-size: 16px;
     transition: all 150ms ease;
     border: none;
-    &:focus{
+    &:focus {
       border: none;
     }
-    .option{
-      &:hover{
+    .option {
+      &:hover {
         font-size: 29px;
       }
-
     }
+  }
+}
+
+@media (max-width: 750px) {
+  .inputContainer {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+    text-align: center;
+    .field {
+      margin-left: 20px;
+    }
+    .option {
+      margin-bottom: 10px;
+    }
+  }
+  .cardContainer {
+    margin-top: 120px;
+  }
+}
+
+.preload .text {
+  background-image: var(--loading-text-gradient);
+  background-size: 500%;
+  font-size: calc(2rem + 3vw);
+  font-weight: 700;
+  line-height: 1em;
+  text-transform: uppercase;
+  letter-spacing: 16px;
+  padding-inline-start: 16px;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 0.5px #878888;
+  animation: loadingText linear 1s infinite;
+}
+
+@keyframes loadingText {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
   }
 }

@@ -4,16 +4,9 @@ export const GET_COUNTRY = gql`
   query Query {
     countries {
       name
-      native
+      code
       capital
-      emoji
-      currency
-      emojiU
-      continent{
-        name
-      }
-      languages {
-        code
+      continent {
         name
       }
     }

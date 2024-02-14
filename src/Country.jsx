@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { colors } from "./colors";
+import Flag from "react-world-flags";
 
 const Country = ({ inputValue, data, selectedValue }) => {
   const [clicked, setClicked] = useState(null);
@@ -10,8 +11,9 @@ const Country = ({ inputValue, data, selectedValue }) => {
 
   const filteredData = data?.countries?.filter((country) => {
     if (selectedValue === "All") {
-      return country &&
-      country.name.toLowerCase().includes(inputValue.toLowerCase())
+      return (
+        country && country.name.toLowerCase().includes(inputValue.toLowerCase())
+      );
     } else {
       return (
         country.name.toLowerCase().includes(inputValue.toLowerCase()) &&
@@ -44,12 +46,14 @@ const Country = ({ inputValue, data, selectedValue }) => {
                 : "",
           }}
         >
+          <Flag code={cont.code} className="flag" />
+
           <p>
-            <b>Country:</b>
+            <b>Country: </b>
             {cont.name}
           </p>
           <p>
-            <b>Capital:</b>
+            <b>Capital: </b>
             {cont.capital}
           </p>
           <p>

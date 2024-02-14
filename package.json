@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@apollo/client": "^3.9.2",
-    "emoji-flags": "^1.3.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-world-flags": "^1.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
